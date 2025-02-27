@@ -16,3 +16,19 @@ def invert_string(string):
                 inverted = inverted + new_word
             word = ""
     return inverted
+
+## BETTER SOLUTION
+def invert_string_(string):
+    inverted = ""
+    t, r = 0, 0
+    while r < len(string):
+        if string[r] != " ":
+            r += 1
+            if r == len(string):
+                inverted = inverted + string[t:r][::-1]
+        else: 
+            inverted = inverted + string[t:r][::-1] + " "
+            r += 1
+            t = r
+            
+    return inverted
