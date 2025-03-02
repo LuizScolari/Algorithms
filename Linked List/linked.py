@@ -21,7 +21,7 @@ class DoubleLinkedList:
 
     def addTail(self, value):
         new_node = Node(value)
-        new_node.next = self.tail
+        new_node.prev = self.tail
 
         if self.tail:
             self.tail.next = new_node
@@ -50,32 +50,45 @@ class DoubleLinkedList:
         else: 
             self.head = None
         return removed
-    
+
 class TestDoubleLinkedList:
     def test_operations(self):
         dll = DoubleLinkedList()
-        
-        print("Adicionando 1 na head:")
+
+        print("\nAdicionando 1 na head:")
         dll.addHead(1)
         print(f"Head: {dll.head.value}, Tail: {dll.tail.value}")
 
-        print("Adicionando 2 na tail:")
+        print("\nAdicionando 2 na tail:")
         dll.addTail(2)
         print(f"Head: {dll.head.value}, Tail: {dll.tail.value}")
 
-        print("Removendo da head:")
+        print("\nAdicionando 3 na tail:")
+        dll.addTail(3)
+        print(f"Head: {dll.head.value}, Tail: {dll.tail.value}")
+
+        print("\nAdicionando 0 na head:")
+        dll.addHead(0)
+        print(f"Head: {dll.head.value}, Tail: {dll.tail.value}")
+
+        print("\nRemovendo da head:")
         removed = dll.removeHead()
         print(f"Removido: {removed}, Head: {dll.head.value if dll.head else None}, Tail: {dll.tail.value if dll.tail else None}")
 
-        print("Removendo da tail:")
+        print("\nRemovendo da tail:")
         removed = dll.removeTail()
-        print(f"Removido: {removed}, Head: {dll.head}, Tail: {dll.tail}")
+        print(f"Removido: {removed}, Head: {dll.head.value if dll.head else None}, Tail: {dll.tail.value if dll.tail else None}")
 
-        print("Tentando remover da head em lista vazia:")
+        print("\nRemovendo toda a lista:")
+        dll.removeHead()
+        dll.removeHead()
+        print(f"Head: {dll.head}, Tail: {dll.tail}")
+
+        print("\nTentando remover da head em lista vazia:")
         removed = dll.removeHead()
         print(f"Removido: {removed}")
 
-        print("Tentando remover da tail em lista vazia:")
+        print("\nTentando remover da tail em lista vazia:")
         removed = dll.removeTail()
         print(f"Removido: {removed}")
 
