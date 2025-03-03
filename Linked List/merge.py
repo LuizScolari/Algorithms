@@ -10,7 +10,6 @@ class Solution:
                 current.next = list2
                 list2 = list2.next
             current = current.next
-            print(head.next)
         if list1:
             current.next = list1
         else:
