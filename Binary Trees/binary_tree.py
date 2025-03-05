@@ -38,6 +38,17 @@ class BinaryTree:
             return self.search_recursive(node.left, data)
         else:
             return self.search_recursive(node.right, data)
+        
+    def preorder_transversal(self):
+        result = []
+        self.preorder_recursive(self.root, result)
+        return result
+    
+    def preorder_recursive(self, node, result):
+        if node:
+            result.append(node.data)
+            self.preorder_recursive(node.left, result)
+            self.preorder_recursive(node.right, result)
 
 tree = BinaryTree()
 tree.insert(5)
@@ -54,3 +65,5 @@ print(tree.search(8))
 print(tree.search(1))
 print(tree.search(10))
 print(tree.search(7))
+
+print(tree.preorder_transversal())
