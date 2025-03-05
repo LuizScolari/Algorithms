@@ -50,6 +50,28 @@ class BinaryTree:
             self.preorder_recursive(node.left, result)
             self.preorder_recursive(node.right, result)
 
+    def inorder_transversal(self):
+        result = []
+        self.inorder_recursive(self.root, result)
+        return result
+    
+    def inorder_recursive(self, node, result):
+        if node:
+            self.inorder_recursive(node.left, result)
+            result.append(node.data)
+            self.inorder_recursive(node.right, result)
+    
+    def postorder_transversal(self):
+        result = []
+        self.postorder_recursive(self.root, result)
+        return result
+    
+    def postorder_recursive(self, node, result):
+        if node:
+            self.inorder_recursive(node.left, result)
+            self.postorder_recursive(node.right, result)
+            result.append(node.data)
+
 tree = BinaryTree()
 tree.insert(5)
 tree.insert(3)
@@ -67,3 +89,5 @@ print(tree.search(10))
 print(tree.search(7))
 
 print(tree.preorder_transversal())
+print(tree.inorder_transversal())
+print(tree.postorder_transversal())
