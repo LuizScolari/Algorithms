@@ -68,7 +68,7 @@ class BinaryTree:
     
     def postorder_recursive(self, node, result):
         if node:
-            self.inorder_recursive(node.left, result)
+            self.postorder_recursive(node.left, result)
             self.postorder_recursive(node.right, result)
             result.append(node.data)
 
